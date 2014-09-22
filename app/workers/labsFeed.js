@@ -23,8 +23,10 @@ function parse(xml) {
       var labs = [];
       result.rss.channel.item.forEach(function(lab) {
         // Our parsing of each lab
+        var lab_id = lab.link.substr(lab.link.lastIndexOf('/') + 1);
         labs.push({
           name: lab.title,
+          lab_id: lab_id,
           description: lab.description,
           version: '1.0.0'
         });

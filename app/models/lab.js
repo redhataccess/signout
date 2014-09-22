@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var LabSchema = new Schema({
   name: String,
+  lab_id: String,
   version: String,
   description: String
 });
