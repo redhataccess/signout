@@ -17,7 +17,8 @@ function parse(xml) {
   // explicitArray:false tells the parser to only glob things
   // into arrays if there is more than one.
   xml2js.parseString(xml, {
-    explicitArray: false
+    explicitArray: false,
+    trim: true
   }, function(err, result) {
     if (result && result.rss && result.rss.channel && result.rss.channel.item) {
       var labs = [];
