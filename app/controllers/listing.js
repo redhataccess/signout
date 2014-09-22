@@ -9,11 +9,10 @@ module.exports = function(app) {
   app.use('/', router);
 };
 
-router.get('/', function(req, res, next) {
+router.get('/labs', function(req, res, next) {
   Lab.find(function(err, labs) {
     if (err) return next(err);
     res.render('index', {
-      title: 'Labs Listing',
       labs: labs
     });
   });
