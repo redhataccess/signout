@@ -15,13 +15,9 @@ module.exports = function(app, config) {
     if (req.method === 'GET') {
       res.redirect('https://access.redhat.com');
     } else {
-      res.writeHead(200, {
-        'Content-Type': 'text/plain'
-      });
       res.json({
         msg: 'nom nom'
       });
-      res.end();
     }
   });
 
