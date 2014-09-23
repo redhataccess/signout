@@ -5,6 +5,7 @@ var express = require('express');
 module.exports = function(app, config) {
 
   app.all('*', function(req, res) {
+    res.header('Access-Control-Allow-Origin', '*');
     for (var cookie in req.cookies) {
       res.cookie(cookie, '', {
         expires: new Date(1),
