@@ -9,11 +9,19 @@ module.exports = function(app) {
 
 router.all('*', function(req, res) {
   for (var cookie in req.cookies) {
-    res.clearCookie(cookie);
+    res.cookie(cookie, '', {
+      expires: new Date(1),
+      path: '/',
+      domain: '.redhat.com'
+    });
   }
-  res.writeHead(200, {
-    'Content-Type': 'text/plain'
-  });
-  res.write('nom nom');
-  res.end();
+  if (req.method === 'GET') {
+    res.redirect('https://access.redhat.com');
+  } else {
+    res.writeHead(200, {
+      'Content-Type': 'text/plain'
+    });
+    res.write('nom nom');
+    res.end();
+  }
 });
