@@ -1,22 +1,10 @@
 'use strict';
 var express = require('express');
-var glob = require('glob');
 
-var logger = require('morgan');
-var compress = require('compression');
 
 module.exports = function(app, config) {
-  app.set('views', config.root + '/app/views');
-  app.set('view engine', 'jade');
 
-  app.use(logger('dev'));
-  app.use(compress());
-  app.use(express.static(config.root + '/public'));
-
-  // Pull in controllers
-  glob.sync(config.root + '/app/controllers/*.js').forEach(function(controller) {
-    require(controller)(app);
-  });
+  require(config.root + '/app/monster')(app);
 
   app.use(function(req, res, next) {
     var err = new Error('Not Found');

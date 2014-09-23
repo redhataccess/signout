@@ -7,34 +7,19 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'labs'
+      name: 'cookiemonster'
     },
     ip: '127.0.0.1',
-    port: 9000,
-    db: 'mongodb://localhost/labs-development'
-
-  },
-
-  test: {
-    root: rootPath,
-    app: {
-      name: 'labs'
-    },
-    ip: '127.0.0.1',
-    port: 9000,
-    db: 'mongodb://localhost/labs-test'
-
+    port: 9000
   },
 
   production: {
     root: rootPath,
     app: {
-      name: 'labs'
+      name: 'cookiemonster'
     },
     ip: process.env.OPENSHIFT_NODEDIY_IP,
-    port: process.env.OPENSHIFT_NODEDIY_port,
-    db: 'mongodb://localhost/labs-production'
-
+    port: process.env.OPENSHIFT_NODEDIY_port
   }
 };
 
