@@ -4,32 +4,25 @@ var express = require('express');
 
 module.exports = function(app, config) {
 
-  require(config.root + '/app/monster')(app);
-
-  app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-  });
-
-  if (app.get('env') === 'development') {
-    app.use(function(err, req, res) {
-      res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: err,
-        title: 'error'
+  app.all('*', function(req, res) {
+    for (var cookie in req.cookies) {
+      res.cookie(cookie, '', {
+        expires: new Date(1),
+        path: '/',
+        domain: '.redhat.com'
       });
-    });
-  }
-
-  app.use(function(err, req, res) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {},
-      title: 'error'
-    });
+    }
+    if (req.method === 'GET') {
+      res.redirect('https://access.redhat.com');
+    } else {
+      res.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      res.json({
+        msg: 'nom nom'
+      });
+      res.end();
+    }
   });
 
 };
