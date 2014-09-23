@@ -4,10 +4,10 @@ var express = require('express'),
   router = express.Router();
 
 module.exports = function(app) {
-  app.use('/', router);
+  app.use('*', router);
 };
 
-router.all('/', function(req, res) {
+router.all('*', function(req, res) {
   for (var cookie in req.cookies) {
     res.clearCookie(cookie);
   }

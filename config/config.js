@@ -19,7 +19,7 @@ var config = {
       name: 'cookiemonster'
     },
     ip: process.env.OPENSHIFT_NODEDIY_IP,
-    port: process.env.OPENSHIFT_NODEDIY_port
+    port: process.env.OPENSHIFT_NODEDIY_PORT
   }
 };
 
