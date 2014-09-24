@@ -7,7 +7,7 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'cookiemonster'
+      name: 'signout'
     },
     ip: '127.0.0.1',
     port: 9000
@@ -16,7 +16,7 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'cookiemonster'
+      name: 'signout'
     },
     ip: process.env.OPENSHIFT_NODEDIY_IP,
     port: process.env.OPENSHIFT_NODEDIY_PORT
