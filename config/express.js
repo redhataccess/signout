@@ -15,12 +15,12 @@ function clearCookies(req, res) {
 module.exports = function(app, config) {
 
   app.get('/img.gif', function(req, res) {
+    clearCookies(req, res);
     var img = new Buffer('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
     res.writeHead(200, {
       'Content-Type': 'image/gif',
       'Content-Length': img.length
     });
-    clearCookies(req, res);
     res.end(img);
   });
 
